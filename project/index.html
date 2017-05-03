@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+	<script type="text/javascript" src = "https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.js"></script>
+	<link rel="stylesheet" href="scatter.css" charset="utf-8">
+</head>
+
+<body>
+	<div id="chart"></div>
+	<script type="text/javascript" src = "d3_project.js"></script>
+	<h2>Dataset Description: </h2>
+		<p>
+			The dataset contains a subset of the fuel economy data that the EPA makes available on 
+			<a href="http://fueleconomy.gov">http://fueleconomy.gov</a>
+			. It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car.
+		</p>
+		<p>
+			The dataset has 234 rows(observations): The variables include: manufacturer, model, type of transmission(trans), fuel type(fl), type of car(class), highway miles per gallon(hwy).
+		</p>
+		<p>
+			The csv file can be downloaded 
+			<a href="https://www.dropbox.com/s/5yx2wi88yyin2g1/mpg.csv?dl=0">here</a>.
+		</p>
+	<h2>Question to Answer: </h2>
+		<p>
+			I hope to explore the relationship between the engine displacement and car fuel economy, namely miles per gallon. A scatter plot will be visualized, where x axis is the engine displacement, and y axis is highway miles per gallon of that car. In addition, I hope to explore the fuel economy of different car class, such as compact, midsize, SUV, etc.
+		</p>
+		<p>
+			Different from workshop 3, the plot is made by D3 instead of C3, and it is made to become interaction. The user can zoom in and zoom out to explore. There would also be tool tip for each data point, so that more information can be found in the tip, such as the model of car for each data point.
+		</p>
+
+<!-- 		var dataset;
+
+		d3.csv("mpg.csv", function(data){
+
+			// initialize the plot window
+			var w = 1000;
+			var h = 400;
+			var padding = 20;
+			svg = d3.select("body")
+					.append("svg")
+					.attr("width", w)
+					.attr("height", h);
+
+			var xMax = d3.max(data, function(d) {return d.displ;}) * 1.05;
+			var xMin = d3.min(data, function(d) {return d.displ;}) * 0.95;
+			var yMax = d3.max(data, function(d) {return d.hwy;}) * 1.05;
+			var yMin = d3.min(data, function(d) {return d.hwy;}) * 0.95;
+
+			// set the scale of x,y axis, and color
+			var xScale = d3.scaleLinear()
+					.domain([xMin, xMax])
+					.range([padding, w - padding]);
+
+			var yScale = d3.scaleLinear()
+					.domain([yMin, yMax])
+					.range([h - padding, padding]);
+
+    		var color = d3.scaleOrdinal(d3.schemeCategory10);
+    		var color_dict = {"2seater":1, "compact":2, "subcompact": 3, "midsize": 4, "suv": 5, "minivan": 6, "pickup": 7}
+
+			// add x,y axis
+			var xAxis = d3.axisBottom()
+						.scale(xScale);
+
+			var yAxis = d3.axisLeft()
+						.scale(yScale);
+
+			var gX = svg.append("g")
+				.call(xAxis)
+				.attr("transform", "translate(0,"+(h-padding)+")");
+
+			var gY = svg.append("g")
+				.call(yAxis)
+				.attr("transform", "translate("+padding+",0)");
+
+			// add zoom
+			var zoom = d3.zoom()
+				// .x(xScale)
+				// .y(yScale)
+			    .scaleExtent([1, 40])
+			    .translateExtent([[-100, -100], [w + 90, h + 100]])
+			    .on("zoom", zoomed);
+
+			svg.call(zoom);
+
+			function zoomed() {
+			  circles.attr("transform", d3.event.transform);
+			  gX.call(xAxis.scale(d3.event.transform.rescaleX(xScale)));
+			  gY.call(yAxis.scale(d3.event.transform.rescaleY(yScale)));
+			}
+
+			// add tips
+			var tip = d3.tip()
+						.attr("class", "d3-tip")
+						.offset([-10,0])
+						.html(function(d) {
+							return "Car: "+d.manufacturer+" "+d.model+"<br>" +
+									"Displacement: " + d.displ + "<br>" +
+									"Highway MPG: " + d.hwy;
+						});
+
+
+			svg.call(tip);
+
+			// draw the circle/points 
+			var circles = svg.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("cx", function(d){return xScale(d.displ);})
+				.attr("cy", function(d){return yScale(d.hwy);})
+				.attr("r", "3px")
+				.style("fill", function(d) {return color(color_dict[d.class]);})
+				.on("mouseover", tip.show)
+				.on("mouseout", tip.hide);
+
+			// TO-DO: add tip transition, fix circles boundary, legend, axis label, title
+
+
+
+		});
+ -->
+		
+	
+</body>
