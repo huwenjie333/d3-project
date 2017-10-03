@@ -36,7 +36,14 @@ d3.csv("mpg.csv", function(data){
 
   var gX = svg.append("g")
     .call(xAxis)
-    .attr("transform", "translate(0,"+(h-padding)+")");
+    .attr("transform", "translate(0,"+(h-padding)+")")
+    .append("text")
+      // .classed("label", true)
+      .attr("class", "label")
+      .attr("x", w - 100)
+      .attr("y", -10)
+      .style("text-anchor", "end")
+      .text("xCat");
 
   var gY = svg.append("g")
     .call(yAxis)
@@ -84,6 +91,12 @@ d3.csv("mpg.csv", function(data){
     .on("mouseout", tip.hide);
 
   // TO-DO: add tip transition, fix circles boundary, legend, axis label, title
+
+  // add axis label
+  // svg.append("g")
+  //     .classed("x axis", true)
+  //     .attr("transform", "translate(0," + h + ")")
+  //     .call(xAxis)
 
 
 

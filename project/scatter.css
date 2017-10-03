@@ -64,3 +64,8 @@ div.tooltip {
   top: 100%;
   left: 0;
 }
+
+text.label {
+  color: black;
+  font: 30px Arial;
+}
